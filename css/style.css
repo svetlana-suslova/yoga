@@ -519,9 +519,11 @@ header ul li:before {
 }
 .content .contact-img {
   width: 50%;
+  overflow: hidden;
 }
 .content .contact-img img {
   height: 550px;
+  opacity: 0.7;
   -webkit-transform: translateY(-13%);
       -ms-transform: translateY(-13%);
           transform: translateY(-13%);
