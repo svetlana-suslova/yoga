@@ -96,6 +96,10 @@ window.addEventListener('DOMContentLoaded', function() {
      	overlay.style.display = "none";
      	more.classList.remove('more-splash');
      	document.body.style.overflow = "";
+          let statusMessage = document.querySelector('.status');
+          if (statusMessage) {
+               statusMessage.remove();
+          }
      });
 
      for (let i = 0; i < moreInTab.length; i++) {
