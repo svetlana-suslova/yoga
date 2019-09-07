@@ -81,7 +81,6 @@ window.addEventListener('DOMContentLoaded', function() {
  setClock('timer', deadline);
 
  //Modal
- 
  let more = document.querySelector('.more'),
      overlay = document.querySelector('.overlay'),
      close = document.querySelector('.popup-close');
@@ -116,16 +115,17 @@ window.addEventListener('DOMContentLoaded', function() {
  message.success = "Спасибо! Скоро мы с вами свяжемся";
  message.failure = "Что-то пошло не так...";
 
- let form = document.getElementsByClassName('main-form')[0],
-     input = form.getElementsByTagName('input'),
+ let modalForm = document.getElementsByClassName('main-form')[0],
+     contactForm = document.getElementById('form');
      statusMessage = document.createElement('div');
      statusMessage.classList.add('status');
 
-     form.addEventListener('submit', function(event) {
+//AJAX 
+     function sendAjaxForm(form) {
+          input = form.getElementsByTagName('input'),  
           event.preventDefault();
           form.appendChild(statusMessage);
 
-          //AJAX
           let request = new XMLHttpRequest();
           request.open("POST", 'server.php');
           request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -149,25 +149,16 @@ window.addEventListener('DOMContentLoaded', function() {
                input[i].value = '';
           }
 
+     }
+
+     modalForm.addEventListener('submit', function(event) {
+          sendAjaxForm(modalForm);
      });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+     contactForm.addEventListener('submit', function(event) {
+          sendAjaxForm(contactForm);
+     });
 
 
 
