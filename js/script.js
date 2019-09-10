@@ -80,6 +80,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
  setClock('timer', deadline);
 
+
  //Modal
  let more = document.querySelector('.more'),
      overlay = document.querySelector('.overlay'),
@@ -111,9 +112,9 @@ window.addEventListener('DOMContentLoaded', function() {
 
  // Form
  let message = new Object();
- message.loading = "Загрузка...";
- message.success = "Спасибо! Скоро мы с вами свяжемся";
- message.failure = "Что-то пошло не так...";
+ message.loading = "Loading...";
+ message.success = "Thanks! We will contact you soon";
+ message.failure = "Something went wrong...";
 
  let modalForm = document.getElementsByClassName('main-form')[0],
      contactForm = document.getElementById('form');
