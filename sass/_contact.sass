@@ -1,0 +1,50 @@
+.contact
+	width: 86%
+	height: 400px
+	display: flex
+	background-color: $dark
+	margin: 0 auto
+	margin-top: 100px
+	box-shadow: 0px 0px 30px rgba(0,0,0, .8)
+	&-img
+		width: 50%
+		overflow: hidden
+		img
+			height: 550px
+			transform: translateY(-13%)
+			opacity: 0.7
+	&-form
+		width: 50%
+		padding-left: 40px
+		&-title
+			margin-top: 30px
+			color: $main-color
+			font-size: 26px
+			font-weight: 300
+			&:after
+				content: ''
+				display: block
+				width: 20%
+				height: 1px
+				background-color: $main-color
+				margin-top: 4px
+		form
+			input
+				display: block
+				width: 60%
+				height: 40px
+				margin-top: 30px
+				background-color: transparent
+				border: none
+				border-bottom: 1px solid #fff
+				color: #fff
+			button
+				margin-top: 60px
+				width: 150px
+				height: 40px
+				background-color: transparent
+				border: 1px solid $main-color
+				color: $main-color
+				cursor: pointer
+				&:hover
+					box-shadow: 0 0 10px $main-color

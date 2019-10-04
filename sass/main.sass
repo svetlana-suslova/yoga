@@ -1,0 +1,55 @@
+.fade
+  -webkit-animation-name: fade
+  animation-name: fade
+  -webkit-animation-duration: 2.5s
+  animation-duration: 2.5s
+  -webkit-animation-name: fade
+  -webkit-animation-duration: 2.5s
+@-webkit-keyframes fade
+  from
+    opacity: 0.1
+  to
+    opacity: 1
+@keyframes fade
+  from
+    opacity: 0.1
+  to
+    opacity: 1
+
+.more-splash
+  -webkit-animation-name: splash
+  animation-name: splash
+  -webkit-animation-duration: 1.7s
+  animation-duration: 1.7s
+@-webkit-keyframes splash
+  from
+    box-shadow: 0 0 10px #c78030
+  to
+    box-shadow: 0 0 60px #c78030
+@keyframes splash
+  from
+    box-shadow: 0 0 10px #c78030
+  to
+    box-shadow: 0 0 60px #c78030
+
+*
+	font-family: 'Roboto Slab'
+	box-sizing: border-box
+	margin: 0
+	padding: 0
+	outline: none
+
+a
+	color: inherit
+	text-decoration: none
+	&:visited, &:hover, &:focus, &:active
+		text-decoration: none
+		color: inherit
+
+@import 'reset'
+@import 'variables'
+@import 'header'
+@import 'screen'
+@import 'content'
+@import 'modal'
+@import 'media'

@@ -1,6 +1,6 @@
 window.addEventListener('DOMContentLoaded', function() {
 
-	let tab = document.getElementsByClassName('info-header-tab'),
+	let tab = document.getElementsByClassName('info-header__tab'),
 	    tabContent = document.getElementsByClassName('info-tabcontent'),
 	    info = document.getElementsByClassName('info-header')[0],
 	    moreInTab = document.getElementsByClassName('description-btn');
@@ -10,6 +10,7 @@ window.addEventListener('DOMContentLoaded', function() {
 		for (let i = a; i < tabContent.length; i++) {
 			tabContent[i].classList.remove('show');
 			tabContent[i].classList.add('hide');
+      tab[i].classList.remove('info-header__tab-clicked');
 		}
 	}
 
@@ -20,7 +21,8 @@ window.addEventListener('DOMContentLoaded', function() {
  	if (tabContent[b].classList.contains('hide') ) {
  		hideTabContent(0);
  		tabContent[b].classList.remove('hide');
-			tabContent[b].classList.add('show');
+		tabContent[b].classList.add('show');
+    tab[b].classList.add('info-header__tab-clicked');
  	}
  }
 
@@ -28,7 +30,7 @@ window.addEventListener('DOMContentLoaded', function() {
  info.addEventListener('click', function(event) {
  	let target = event.target;
 
- 	if (target.className == 'info-header-tab') {
+ 	if (target.className == 'info-header__tab') {
  		for (let i = 0; i < tab.length; i++) {
  			if (target == tab[i]) {
  				showTabContent(i);
@@ -38,51 +40,54 @@ window.addEventListener('DOMContentLoaded', function() {
  	}
  });
 
-//Timer
-
- let deadline = '2019-10-21';
+// Timer
+ let deadline = 'Jan 1, 2020 00:00:00';
 
  function getTimeRemaining(endtime) {
- 	let t = Date.parse(endtime) - Date.parse(new Date()),
- 	    seconds = Math.floor( (t / 1000) % 60 ),
- 	    minutes = Math.floor( (t / 1000 / 60) % 60 ),
- 	    hours = Math.floor( (t / (1000 * 60 * 60) ) );
- 	    
- 	    return {
- 	    	'total': t,
- 	    	'hours': hours,
- 	    	'minutes': minutes,
- 	    	'seconds': seconds
- 	    };
+  let distance = Date.parse(endtime) - Date.parse(new Date()),
+      seconds = pad(Math.floor((distance % (1000 * 60)) / 1000)),
+      minutes = pad(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))),
+      hours = pad(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))),
+      days = pad(Math.floor(distance / (1000 * 60 * 60 * 24)));
+      
+      return {
+        'total': distance,
+        'days': days,
+        'hours': hours,
+        'minutes': minutes,
+        'seconds': seconds
+      };
+ }
+
+ function pad(n) {
+    return (n < 10 ? '0' : '') + n;
  }
 
  function setClock(id, endtime) {
- 	let timer = document.getElementById(id),
- 	    hours = timer.querySelector('.hours'),
- 	    minutes = timer.querySelector('.minutes'),
- 	    seconds = timer.querySelector('.seconds');
+  let timerNumbers = document.getElementById(id);
 
- 	    function updateClock() {
- 	    	let t = getTimeRemaining(endtime);
- 	    	hours.innerHTML = t.hours;
- 	    	minutes.innerHTML = t.minutes;
- 	    	seconds.innerHTML = t.seconds;
+      function updateClock() {
+        let t = getTimeRemaining(endtime);
+        timerNumbers.innerHTML = "<span>" + t.days + "</span><span>" + t.hours + "</span><span>" + t.minutes + "</span><span>" + t.seconds + "</span>";
 
- 	    	if (t.total <= 0) {
- 	    		clearInterval(timeInterval);
- 	    	}
+        if (t.total <= 0) {
+          timerNumbers.innerHTML = "EXPIRED";    
+        }
 
- 	    }
+      }
 
- 	    updateClock();
- 	    let timeInterval = setInterval(updateClock, 1000);
+      updateClock();
+      let timeInterval = setInterval(updateClock, 1000);
  }
 
  setClock('timer', deadline);
 
 
+
+
+
  //Modal
- let more = document.querySelector('.more'),
+ let more = document.getElementsByClassName('timer-btn')[0],
      overlay = document.querySelector('.overlay'),
      close = document.querySelector('.popup-close');
      
@@ -216,15 +221,13 @@ dotsWrap.addEventListener('click', function (event) {
 });
 
 //Calc
-let persons = document.getElementsByClassName('counter-block-input')[0],
-    restDays = document.getElementsByClassName('counter-block-input')[1],
+let persons = document.getElementsByClassName('counter-block__input')[0],
+    restDays = document.getElementsByClassName('counter-block__input')[1],
     place = document.getElementById('select'),
     totalValue = document.getElementById('total'),
     personSum = 0,
     daysSum = 0,
     total = 0;
-
-    totalValue.innerHTML = 0;
 
     persons.addEventListener('change', function () {
          personSum = +this.value;
