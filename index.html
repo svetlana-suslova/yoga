@@ -226,9 +226,10 @@
 				<div class="contact-form">
 					<div class="contact-form-title">We will contact you</div>
 					<!-- /.contact-form-title -->
-					<form id="form">
-						<input required type="email" placeholder="Your e-mail">
-						<input required type="tel" placeholder="Your phone">
+					<form id="form" action="mail.php" method="POST">
+						<input required type="email" name="email" placeholder="Your e-mail" autocomplete="on">
+						<input required type="text" name="phone" pattern="[0-9]{3}-[0-9]{7}" placeholder="Your phone" autocomplete="on">
+						<span class="contact-form-example">xxx-xxxxxxx</span>
 						<button type="submit">Send</button>
 					</form>
 					<!-- /.form -->
@@ -285,9 +286,9 @@
 				<div class="popup-text">Learn more about your vacation</div>
 				<!-- /.popup-text -->
 				<div class="popup-form">	
-				 <form action="#" class="main-form">
-						<label class="popup-form__label" for="phone">Enter your phone number:</label>
-						<input class="popup-form__input" name="phone" type="tel" required placeholder="+38(093) 617 317 9">
+				 <form action="mail.php" method="POST" class="main-form">
+						<label class="popup-form__label" for="phone">Enter your phone number in format xxx-xxxxxxx:</label>
+						<input class="popup-form__input" name="phone" type="text" required placeholder="093-2223179" pattern="[0-9]{3}-[0-9]{7}" autocomplete="on">
 						<button class="button popup-form__btn">Submit application!</button>
 				 </form>
 				</div>
@@ -300,24 +301,6 @@
 	<!-- /.overlay -->
 	
  <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
- <script>
-	$(document).ready(function(){
-		let header = $('header');
-  let hamburger = $('.hamburger');
-  let menu = $('.menu');
-  let menu_item = $('.menu-item');
-		hamburger.on("click", function(){
-			hamburger.toggleClass('hamburger-active');
-			header.toggleClass('header-active');
-			menu_item.toggleClass('menu-item-active');
-		});
-		menu_item.on("click", function(){
-			hamburger.toggleClass('hamburger-active');
-			header.toggleClass('header-active');
-			menu_item.toggleClass('menu-item-active');
-		});
-	});
-</script>
-	<script src="js/script.js"></script>
+	<script src="js/bundle/bundle.js"></script>
 </body>
 </html>

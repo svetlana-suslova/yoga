@@ -1,5 +1,49 @@
 window.addEventListener('DOMContentLoaded', function() {
+//Menu
+  let header = document.getElementsByTagName('header')[0],
+      hamburger = document.getElementsByClassName('hamburger')[0],
+      menu = document.getElementsByClassName('menu')[0],
+      menu_item = document.getElementsByClassName('menu-item');
 
+      function addMenuItemActive() {
+        for (i = 0; i < menu_item.length; i++){
+              menu_item[i].classList.add('menu-item-active');
+            }
+      }
+
+      function removeMenuItemActive() {
+        for (i = 0; i < menu_item.length; i++){
+              menu_item[i].classList.remove('menu-item-active');
+            }
+      }
+      
+      hamburger.addEventListener('click', function(){
+        if ( this.classList.contains('hamburger-active') ) {
+            this.classList.remove('hamburger-active');
+            header.classList.remove('header-active');
+            removeMenuItemActive();
+          } else {
+            hamburger.classList.add('hamburger-active');
+            header.classList.add('header-active');
+            addMenuItemActive();
+          }
+       });
+      
+      for (i = 0; i < menu_item.length; i++) {
+        menu_item[i].addEventListener('click', function(){
+        if ( hamburger.classList.contains('hamburger-active') ) {
+            hamburger.classList.remove('hamburger-active');
+            header.classList.remove('header-active');
+            removeMenuItemActive();
+          } else {
+            hamburger.classList.add('hamburger-active');
+            header.classList.add('header-active');
+            addMenuItemActive();
+          }
+       });
+      }
+
+//Tab
 	let tab = document.getElementsByClassName('info-header__tab'),
 	    tabContent = document.getElementsByClassName('info-tabcontent'),
 	    info = document.getElementsByClassName('info-header')[0],
@@ -83,9 +127,6 @@ window.addEventListener('DOMContentLoaded', function() {
  setClock('timer', deadline);
 
 
-
-
-
  //Modal
  let more = document.getElementsByClassName('timer-btn')[0],
      overlay = document.querySelector('.overlay'),
@@ -122,14 +163,18 @@ window.addEventListener('DOMContentLoaded', function() {
  message.failure = "Something went wrong...";
 
  let modalForm = document.getElementsByClassName('main-form')[0],
+     popupInput = document.getElementsByClassName('popup-form__input')[0],
      contactForm = document.getElementById('form');
      statusMessage = document.createElement('div');
      statusMessage.classList.add('status');
+     statusMessage.style.color = '#bdbdbd';
+     statusMessage.style.fontSize = '10px';
+
 
 //AJAX 
      function sendAjaxForm(form) {
           input = form.getElementsByTagName('input'),  
-          event.preventDefault();
+          // event.preventDefault();
           form.appendChild(statusMessage);
 
           let request = new XMLHttpRequest();
@@ -157,12 +202,14 @@ window.addEventListener('DOMContentLoaded', function() {
 
      }
 
-     modalForm.addEventListener('submit', function(event) {
+     modalForm.addEventListener('submit', function(e) {
+          e.preventDefault();
           sendAjaxForm(modalForm);
      });
 
 
-     contactForm.addEventListener('submit', function(event) {
+     contactForm.addEventListener('submit', function(e) {
+          e.preventDefault();
           sendAjaxForm(contactForm);
      });
 
@@ -259,5 +306,36 @@ let persons = document.getElementsByClassName('counter-block__input')[0],
      }
 
     });
+
+    //Scroll
+    function animate(draw, duration) {
+      let start = performance.now();
+      requestAnimationFrame(
+        function animate(time) {
+          let timePassed = time - start;
+          if (timePassed > duration) {
+            timePassed = duration;
+          }
+
+          draw(timePassed);
+
+          if (timePassed < duration) {
+            requestAnimationFrame(animate);
+          }
+        });
+    }
+
+    let navBar = document.getElementsByTagName('nav')[0];
+
+    navBar.addEventListener('click', function(e) {
+      e.preventDefault;
+      animate(function(timePassed) {
+        let target = e.target;
+        let section = document.getElementById(target.getAttribute('href').slice(1));
+        window.scrollBy(0, section.getBoundingClientRect().top / 20 - 4);
+      }, 1000);
+
+      });
+
 
 });

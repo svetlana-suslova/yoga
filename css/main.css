@@ -747,6 +747,14 @@ header {
   margin-top: 4px;
 }
 
+.contact-form-example {
+  color: #bdbdbd;
+  font-size: 12px;
+  font-weight: 300;
+  display: block;
+  margin-top: 3px;
+}
+
 .contact-form form input {
   display: block;
   width: 60%;
@@ -760,6 +768,7 @@ header {
 
 .contact-form form button {
   margin-top: 60px;
+  margin-bottom: 10px;
   width: 150px;
   height: 40px;
   background-color: transparent;
@@ -1251,6 +1260,10 @@ footer .social-block a img {
     font-weight: 700;
   }
 
+  .contact-form-example {
+    font-size: 10px;
+  }
+
   .contact-form form input {
     width: 90%;
     height: 30px;
@@ -1260,7 +1273,7 @@ footer .social-block a img {
   .contact-form form button {
     width: 100px;
     display: block;
-    margin: 50px 5px;
+    margin: 35px 0 5px;
   }
 
   footer {
@@ -1481,6 +1494,10 @@ footer .social-block a img {
     font-size: 20px;
   }
 
+  .contact-form-example {
+    font-size: 10px;
+  }
+
   .contact-form form input {
     width: 80%;
     height: 30px;
@@ -1489,7 +1506,7 @@ footer .social-block a img {
 
   .contact-form form button {
     display: block;
-    margin: 40px 5px;
+    margin: 40px 0 5px;
   }
 
   footer .social-block {
@@ -1626,6 +1643,10 @@ footer .social-block a img {
     font-size: 24px;
   }
 
+  .contact-form-example {
+    font-size: 10px;
+  }
+
   .contact-form form input {
     width: 70%;
     height: 30px;
@@ -1634,7 +1655,7 @@ footer .social-block a img {
 
   .contact-form form button {
     display: block;
-    margin: 40px 15px;
+    margin: 40px 0 5px;
     width: 150px;
     height: 40px;
   }
