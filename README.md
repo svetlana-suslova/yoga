@@ -7,4 +7,6 @@ https://weblovestudio.com/yoga/
   <li>BEM</li>
   <li>JavaScript</li>
   <li>jquery</li>
+  <li>AJAX</li>
+  <li>@media-queries</li>
 </ul>
